@@ -27,6 +27,11 @@
 
 ### Nice to Have
 
+- **Automated Transaction Entry:**
+
+  - Automate the process of entering transactions from the user's card service provider.
+  - Integrate a solution to scrape transaction data (pending successful resolution of scraping issues).
+
 - **User Authentication:**
 
   - User registration and login functionality.
@@ -44,10 +49,6 @@
 - **Advanced Reporting:**
 
   - Generate reports on spending patterns and predictions over time.
-
-- **Automated Transaction Entry:**
-  - Automate the process of entering transactions from the user's card service provider.
-  - Integrate a solution to scrape transaction data (pending successful resolution of scraping issues).
 
 ---
 
