@@ -1,6 +1,6 @@
 # AI Dinero - Project Overview
 
-- **AI Dinero** is a smart budgeting application designed to help users effectively manage their finances. The app automatically categorizes expenses using advanced machine learning algorithms, allowing users to easily track their spending. Users can input hypothetical scenarios, such as increased utility bills, and see the projected impacts on their budgets. With a focus on simplicity and usability, **AI Dinero** empowers users to make informed financial decisions and optimize their budgets.
+**AI Dinero** is a smart budgeting application designed to help users effectively manage their finances. The app automatically categorizes expenses using advanced machine learning algorithms, allowing users to easily track their spending. Users can input hypothetical scenarios, such as increased utility bills, and see the projected impacts on their budgets. With a focus on simplicity and usability, **AI Dinero** empowers users to make informed financial decisions and optimize their budgets.
 
 ## Backend Requirements
 
