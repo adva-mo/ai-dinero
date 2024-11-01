@@ -21,7 +21,7 @@
 
 - **Data Storage:**
 
-- Use a relational database (e.g., PostgreSQL) to securely store user and expense data.
+  - Use a relational database (e.g., PostgreSQL) to securely store user and expense data.
 
 - **Error Handling and Logging:**
 
