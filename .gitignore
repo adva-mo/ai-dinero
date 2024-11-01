@@ -33,6 +33,10 @@ lib/
 *.a
 *.lib
 
+# Database files
+*.db
+*.sqlite
+*.sqlite3
 
 # Project specific
 expenses.json

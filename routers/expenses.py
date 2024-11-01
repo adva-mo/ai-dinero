@@ -1,25 +1,21 @@
-from fastapi import APIRouter
-from ExpensesManager import ExpensesManager
-
-expenses_manager = ExpensesManager()
-expenses_manager.load_expenses_from_json('expenses.json')
-
+from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session
+from db.core import get_db, DBExpense
+from db.expenses import Expense, ExpenseCreate, create_db_expense, read_db_expense
 
 router = APIRouter(
     prefix="/expenses",
 )
 
 @router.get("/")
-async def get_expenses():
-    expenses = expenses_manager.get_all_expenses()
+async def get_expenses(db: Session = Depends(get_db)):
+    expenses = db.query(DBExpense).all()
     return {"expenses": expenses}
 
-@router.get("/{id}")
-async def get_expense(id: int):
-    expense = expenses_manager.get_expense_by_id(id)
-    return {"expense": expense} 
+@router.post("/")
+async def create_expense(expense: ExpenseCreate, db: Session = Depends(get_db)):
+    return create_db_expense(expense, db)
 
-@router.get("/total")
-async def get_total():
-    total = expenses_manager.get_total_amount()
-    return {"total": total}
+@router.get("/{expense_id}")
+async def get_expense(expense_id: int, db: Session = Depends(get_db)):
+    return read_db_expense(expense_id, db)
