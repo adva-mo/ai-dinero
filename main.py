@@ -1,6 +1,9 @@
-from TransactionManager import TransactionManager
+from fastapi import FastAPI
+from routers.expenses import router as expenses_router
 
-my_manager= TransactionManager()
-my_manager.load_transactions_from_json('transactions.json')
-print(my_manager.get_all_transactions())
-print(my_manager.get_total_amount())
+app = FastAPI()
+app.include_router(expenses_router)
+
+app.get("/")
+async def root():
+    return {"message": "Welcome to Transaction API"}    
