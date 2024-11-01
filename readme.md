@@ -19,6 +19,10 @@
 
   - Create RESTful API endpoints for all backend functionality, ensuring proper security and data validation.
 
+- **Data Storage:**
+
+- Use a relational database (e.g., PostgreSQL) to securely store user and expense data.
+
 - **Error Handling and Logging:**
 
   - Implement error handling for API endpoints.
@@ -38,10 +42,6 @@
 
   - User registration and login functionality.
   - Secure password storage and management.
-
-- **Data Storage:**
-
-  - Use a relational database (e.g., PostgreSQL) to securely store user and expense data.
 
 - **Performance Optimization:**
 
