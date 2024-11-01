@@ -36,7 +36,7 @@ class TransactionManager:
         return self._transactions
     
     def get_total_amount(self) -> float:
-        return sum(trx['amount'] for trx in self._transactions)
+        return sum(trx['actualPaymentAmount'] for trx in self._transactions)
         
     def clear_all_transactions(self):
         self._transactions.clear()
