@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from db.core import get_db, DBExpense
-from db.expenses import (
+from src.db.core import get_db, DBExpense
+from src.db.expenses import (
     Expense,
     ExpenseCreate,
     ExpenseUpdate,
@@ -10,6 +10,7 @@ from db.expenses import (
     update_db_expense,
     delete_db_expense
 )
+from src.utils.decorators import handle_single_or_list
 
 router = APIRouter(
     prefix="/expenses",
@@ -23,8 +24,11 @@ async def get_expenses(db: Session = Depends(get_db)):
 
 
 @router.post("/")
-async def create_expense(expense: ExpenseCreate, db: Session = Depends(get_db)):
-    return create_db_expense(expense, db)
+@handle_single_or_list
+async def create_expense(expense: ExpenseCreate | list[ExpenseCreate], db: Session = Depends(get_db)):
+    if isinstance(expense, list):
+        return create_db_expense(expense, db)
+    return create_db_expense([expense], db)
 
 
 @router.get("/{expense_id}/")
