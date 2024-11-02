@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from src.db.core import get_db, DBExpense
-from src.db.expenses import (
+from app.db.core import get_db, DBExpense
+from app.db.expenses import (
     Expense,
     ExpenseCreate,
     ExpenseUpdate,
@@ -10,7 +10,7 @@ from src.db.expenses import (
     update_db_expense,
     delete_db_expense
 )
-from src.utils.decorators import handle_single_or_list
+from app.utils.decorators import handle_single_or_list
 
 router = APIRouter(
     prefix="/expenses",

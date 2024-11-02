@@ -32,6 +32,7 @@ lib/
 *.dylib
 *.a
 *.lib
+.vscode/
 
 # Database files
 *.db
