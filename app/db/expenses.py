@@ -36,13 +36,17 @@ def read_db_expense(expense_id: int, session: Session) -> Expense:
     return db_expense
 
 
-def create_db_expense(expense: ExpenseCreate, session: Session) -> Expense:
+def create_db_expense(expense: list[ExpenseCreate], session: Session) -> Expense:
     try:
-        db_item = DBExpense(**expense.model_dump(exclude_none=True))
-        session.add(db_item)
+        db_expenses = []
+        for exp in expense:
+            db_expense = DBExpense(**exp.model_dump(exclude_none=True))
+            session.add(db_expense)
+            db_expenses.append(db_expense)
         session.commit()
-        session.refresh(db_item)
-        return db_item
+        for expense in db_expenses:
+            session.refresh(expense)
+        return db_expenses
     except SQLAlchemyError as e:
         session.rollback()
         raise HTTPException(
