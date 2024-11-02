@@ -24,6 +24,14 @@ class DBExpense(Base):
     originalAmount: Mapped[float]
 
 
+class DBUser(Base):
+    __tablename__ = "users"
+
+    id: Mapped[int] = mapped_column(primary_key=True, index=True)
+    email: Mapped[str]
+    password: Mapped[str]
+
+
 engine = create_engine(DB_URL)
 session_local = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base.metadata.create_all(engine)
