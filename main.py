@@ -5,5 +5,7 @@ app = FastAPI()
 app.include_router(expenses_router)
 
 app.get("/")
+
+
 async def root():
-    return {"message": "Welcome to Transaction API"}    
+    return {"message": "Welcome to Expenses API"}

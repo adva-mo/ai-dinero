@@ -8,6 +8,7 @@ load_dotenv()
 
 SBR_WEBDRIVER = os.getenv("SBR_WEBDRIVER")
 
+
 def scrape_website(website):
     print("Connecting to Scraping Browser...")
     sbr_connection = ChromiumRemoteConnection(SBR_WEBDRIVER, "goog", "chrome")
@@ -26,4 +27,3 @@ def scrape_website(website):
         html = driver.page_source
         # return html
         print(html)
-
