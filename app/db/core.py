@@ -32,6 +32,14 @@ class DBUser(Base):
     password: Mapped[str]
 
 
+class DBCategory(Base):
+    __tablename__ = "categories"
+
+    id: Mapped[int] = mapped_column(primary_key=True, index=True)
+    name: Mapped[str]
+    description: Mapped[str]
+
+
 engine = create_engine(DB_URL)
 session_local = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base.metadata.create_all(engine)
