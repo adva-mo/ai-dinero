@@ -1,9 +1,7 @@
 from sqlalchemy.orm import Session
 from fastapi import APIRouter, Depends
-from app.utils.decorators import handle_single_or_list
-from app.db.core import get_db, DBUser
+from app.db.core import get_db
 from app.db.users import (
-    User,
     UserCreate,
     UserUpdate,
     create_db_user,

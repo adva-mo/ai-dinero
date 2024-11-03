@@ -1,8 +1,7 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from app.db.core import get_db, DBCategory
+from app.db.core import get_db
 from app.db.categories import (
-    Category,
     CategoryCreate,
     CategoryUpdate,
     create_db_category,
@@ -10,7 +9,6 @@ from app.db.categories import (
     update_db_category,
     delete_db_category
 )
-from app.utils.decorators import handle_single_or_list
 
 router = APIRouter(
     prefix="/categories",

@@ -6,9 +6,15 @@ from .core import DBExpense
 
 
 class ExpenseBase(BaseModel):
-    actualPaymentAmount: float
-    merchantName: str
-    originalAmount: float
+    user_id: int
+    category_id: int
+    actual_amount: float
+    original_amount: float
+    original_currency: str
+    merchant_name: str
+    plan_name: str
+    payment_date_time: str
+    comments: str
 
 
 class Expense(ExpenseBase):

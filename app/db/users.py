@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, joinedload
 from fastapi import HTTPException
 from sqlalchemy.exc import SQLAlchemyError
 from .core import DBUser
@@ -28,7 +28,8 @@ class UserDelete(BaseModel):
 
 
 def read_db_user(user_id: int, session: Session) -> User:
-    db_user = session.query(DBUser).filter(DBUser.id == user_id).first()
+    db_user = session.query(DBUser).options(joinedload(
+        DBUser.expenses)).filter(DBUser.id == user_id).first()
     if not db_user:
         raise HTTPException(status_code=404, detail="User not found")
     return db_user

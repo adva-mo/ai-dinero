@@ -1,7 +1,7 @@
 import os
-from sqlalchemy import create_engine, Float, String
-from sqlalchemy.orm import sessionmaker, DeclarativeBase, Mapped, mapped_column
-
+from sqlalchemy import create_engine, ForeignKey
+from sqlalchemy.orm import sessionmaker, DeclarativeBase, Mapped, mapped_column, relationship
+from typing import List, Optional
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -19,17 +19,25 @@ class DBExpense(Base):
     __tablename__ = "expenses"
 
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
-    actualPaymentAmount: Mapped[float]
-    merchantName: Mapped[str]
-    originalAmount: Mapped[float]
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
+    category_id: Mapped[Optional[int]] = mapped_column(
+        ForeignKey("categories.id"))
+    actual_amount: Mapped[float]
+    original_amount: Mapped[float]
+    original_currency: Mapped[str]
+    merchant_name: Mapped[str]
+    plan_name: Mapped[str]
+    payment_date_time: Mapped[str]
+    comments: Mapped[str]
 
 
 class DBUser(Base):
     __tablename__ = "users"
 
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
-    email: Mapped[str]
+    email: Mapped[str] = mapped_column(unique=True)
     password: Mapped[str]
+    expenses: Mapped[List[DBExpense]] = relationship()
 
 
 class DBCategory(Base):
@@ -38,6 +46,7 @@ class DBCategory(Base):
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
     name: Mapped[str]
     description: Mapped[str]
+    expenses: Mapped[List[DBExpense]] = relationship()
 
 
 engine = create_engine(DB_URL)
