@@ -19,26 +19,24 @@
 #     def extract_relevant_fields(self,expense):
 #         extracted_data = {
 #         "actualPaymentAmount": expense.get("actualPaymentAmount"),
-#         "merchantName": expense.get("merchantName"),
+#         "merchant_name": expense.get("merchant_name"),
 #         "originalAmount": expense.get("originalAmount"),
 #         "originalCurrency": expense.get("originalCurrency"),
 #         "paymentDate": expense.get("paymentDate"),
 #         "purchaseDate": expense.get("purchaseDate"),
 #         "transactionType": expense.get("dealData", {}).get("transactionType"),
-#         "categoryId": expense.get("categoryId"),        
+#         "category id": expense.get("category id"),
 #         "planName": expense.get("planName"),
-        
+
 #     }
 #         return extracted_data
-    
-    
+
+
 #     def get_all_expenses(self):
 #         return self._expenses
-    
+
 #     def get_total_amount(self) -> float:
 #         return sum(trx['actualPaymentAmount'] for trx in self._expenses)
-        
+
 #     def clear_all_expenses(self):
 #         self._expenses.clear()
-
-    

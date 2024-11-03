@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
+from app.utils.decorators import handle_single_or_list
 from app.db.core import get_db, DBExpense
 from app.db.expenses import (
-    Expense,
     ExpenseCreate,
     ExpenseUpdate,
     create_db_expense,
@@ -10,7 +10,6 @@ from app.db.expenses import (
     update_db_expense,
     delete_db_expense
 )
-from app.utils.decorators import handle_single_or_list
 
 router = APIRouter(
     prefix="/expenses",
@@ -26,8 +25,6 @@ async def get_expenses(db: Session = Depends(get_db)):
 @router.post("/")
 @handle_single_or_list
 async def create_expense(expense: ExpenseCreate | list[ExpenseCreate], db: Session = Depends(get_db)):
-    if isinstance(expense, list):
-        return create_db_expense(expense, db)
     return create_db_expense([expense], db)
 
 
