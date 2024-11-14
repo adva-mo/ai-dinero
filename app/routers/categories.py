@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from app.db.core import get_db
+from app.db.core import get_db, DBCategory
 from app.db.categories import (
     CategoryCreate,
     CategoryUpdate,
@@ -13,6 +13,12 @@ from app.db.categories import (
 router = APIRouter(
     prefix="/categories",
 )
+
+
+@router.get("")
+async def get_categories(db: Session = Depends(get_db)):
+    categories = db.query(DBCategory).all()
+    return {"categories": categories}
 
 
 @router.get("/{category_id}")

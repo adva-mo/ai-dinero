@@ -1,3 +1,4 @@
+from typing import List
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from fastapi import HTTPException
@@ -7,7 +8,7 @@ from .core import DBCategory
 
 class CategoryBase(BaseModel):
     name: str
-    description: str
+    external_id: int
 
 
 class Category(CategoryBase):

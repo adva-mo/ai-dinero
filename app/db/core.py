@@ -45,7 +45,7 @@ class DBCategory(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
     name: Mapped[str]
-    description: Mapped[str]
+    external_id: Mapped[int]
     expenses: Mapped[List[DBExpense]] = relationship()
 
 
