@@ -40,4 +40,4 @@ lib/
 *.sqlite3
 
 # Project specific
-expenses.json
+expenses*.json
